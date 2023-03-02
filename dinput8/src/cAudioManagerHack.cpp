@@ -1235,6 +1235,14 @@ unsigned int __thiscall cAudioManagerHack::GetPedCommentSfxHack(CPed *ped, unsig
 		} else {
 			return this->GetPlayerTalkSfx(ped, type);
 		}
+	case 1:   // 1 Cop
+		return this->GetCopTalkSfx(ped, type);
+	case 2:   // 1 Swat
+		return this->GetSwatTalkSfx(ped, type);
+	case 3:   // 1 Fbi
+		return this->GetFBITalkSfx(ped, type);
+	case 4:   // 1 Army
+		return this->GetArmyTalkSfx(ped, type);
 	case 5:   // 5
 		return this->GetMedicTalkSfx(ped, type);
 	case 6:   // 6
@@ -1287,6 +1295,59 @@ unsigned int __thiscall cAudioManagerHack::GetPedCommentSfxHack(CPed *ped, unsig
 		return this->GetViceBlackTalkSfx(ped, type);
 	}
 	return 9942;
+}
+
+unsigned int cAudioManagerHack::GetCopTalkSfx(CPed* ped, unsigned short type) {
+	return cAudioManager::GetCopTalkSfx(ped, type);
+}
+
+unsigned int cAudioManagerHack::GetSwatTalkSfx(CPed* ped, unsigned short type) {
+	unsigned int sfx;
+	switch (type) {
+	case 112:
+		GetPhrase(sfx, ped->phrase, 3285, 7); 
+		break;
+	case 129: 
+		GetPhrase(sfx, ped->phrase, 3292, 4);
+		break;
+	case 142: 
+		GetPhrase(sfx, ped->phrase, 3282, 3);
+		break;
+	default: 
+		return GetGenericMaleTalkSfx(ped, type);
+	}
+	sfx += (3296 - 3282) * (this->m_AudioEntity % 3);
+	return sfx;
+}
+
+unsigned int cAudioManagerHack::GetFBITalkSfx(CPed* ped, unsigned short type) {
+	unsigned int sfx;
+	switch (type) {
+	case 129: 
+		GetPhrase(sfx, ped->phrase, 3240, 6);
+		break;
+	case 130: 
+		GetPhrase(sfx, ped->phrase, 3237, 3);
+		break;
+	case 131:
+		sfx = 3236;
+		break;
+	case 133:
+		GetPhrase(sfx, ped->phrase, 3228, 4);
+		break;
+	case 144:
+	case 145: 
+		GetPhrase(sfx, ped->phrase, 3232, 4);
+		break;
+	default:
+		return GetGenericMaleTalkSfx(ped, type);
+	}
+	sfx += 16 * (this->m_AudioEntity % 3);
+	return sfx;
+}
+
+unsigned int cAudioManagerHack::GetArmyTalkSfx(CPed* ped, unsigned short type) {
+	return this->GetGenericMaleTalkSfx(ped, type);
 }
 
 unsigned int cAudioManagerHack::GetPlayerTalkSfx(CPed *ped, unsigned short type)

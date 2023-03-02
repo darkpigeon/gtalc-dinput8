@@ -157,6 +157,7 @@ public:
 	unsigned int GetPhrase(unsigned int &, unsigned int &, unsigned int, unsigned int);
 	void ProcessLoopingScriptObject(unsigned char);
 	unsigned int GetPlayerTalkSfx(class CPed *, unsigned short);
+	unsigned int GetCopTalkSfx(CPed*, unsigned short);
 	void SetupPedComments(cPedParams &, unsigned short);
 	void AddSampleToRequestedQueue();
 	unsigned int RandomDisplacement(unsigned int);

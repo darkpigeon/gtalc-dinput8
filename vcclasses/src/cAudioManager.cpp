@@ -4,6 +4,7 @@
 static unsigned long g_GetPhrase = vcversion::AdjustOffset(0x005DA690);
 static unsigned long g_ProcessLoopingScriptObject = vcversion::AdjustOffset(0x005DC5A0);
 static unsigned long g_GetPlayerTalkSfx = vcversion::AdjustOffset(0x005E9990);
+static unsigned long g_GetCopTalkSfx = vcversion::AdjustOffset(0x005E93D0);
 static unsigned long g_SetupPedComments = vcversion::AdjustOffset(0x005EB2A0);
 static unsigned long g_GetDistanceSquared = vcversion::AdjustOffset(0x005F5AA0);
 static unsigned long g_AddSampleToRequestedQueue = vcversion::AdjustOffset(0x005F7560);
@@ -24,6 +25,11 @@ __declspec(naked) void cAudioManager::ProcessLoopingScriptObject(unsigned char)
 __declspec(naked) unsigned int cAudioManager::GetPlayerTalkSfx(CPed *, unsigned short)
 {
 	__asm jmp g_GetPlayerTalkSfx;
+}
+
+__declspec(naked) unsigned int cAudioManager::GetCopTalkSfx(CPed *, unsigned short)
+{
+	__asm jmp g_GetCopTalkSfx;
 }
 
 __declspec(naked) void cAudioManager::SetupPedComments(cPedParams &, unsigned short)

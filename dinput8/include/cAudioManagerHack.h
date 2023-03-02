@@ -26,6 +26,10 @@ public:
 	static void InitialiseHack(void);
 	static void ProcessVehicleSirenOrAlarmHack(void);
 	unsigned int GetPedCommentSfxHack(CPed *, unsigned short);
+	unsigned int GetCopTalkSfx(CPed *, unsigned short);
+	unsigned int GetSwatTalkSfx(CPed*, unsigned short);
+	unsigned int GetFBITalkSfx(CPed*, unsigned short);
+	unsigned int GetArmyTalkSfx(CPed*, unsigned short);
 	unsigned int GetPlayerTalkSfx(CPed *, unsigned short);
 	unsigned int GetMedicTalkSfx(CPed *, unsigned short);
 	unsigned int GetFiremanTalkSfx(CPed *, unsigned short);
